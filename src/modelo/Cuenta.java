@@ -24,4 +24,9 @@ public class Cuenta {
     {
         return this.saldo;
     }
+
+    public void mostrarSaldo()
+    {
+        System.out.println(this.getSaldo());
+    }
 }

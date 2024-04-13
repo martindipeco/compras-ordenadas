@@ -18,7 +18,7 @@ public class Principal {
         //instancio cuenta para acceder a sus métodos
         Cuenta cuenta = new Cuenta();
 
-        //TODO: segir a partir de acá
+        //TODO: seguir a partir de acá
         do
         {
             System.out.println("a: muestra saldo");
@@ -32,7 +32,7 @@ public class Principal {
             switch (opcion)
             {
                 case "a":
-                    mostrarSaldo(cuenta);
+                    cuenta.mostrarSaldo();
                     break;
                 case "b":
                     //realiza nueva compra();
@@ -53,38 +53,34 @@ public class Principal {
         scanner.close();
     }
 
-    public static void sumar()
-    {
-        Scanner scanner = new Scanner(System.in);
-        String opcion;
-        float numero;
-        float resultado = 0f;
-        do
-        {
-            System.out.println("Ingrese número a sumar, o 'e' para terminar la operación");
-            opcion = scanner.nextLine();
-            //bloque try catch para evitar que NO se ingrese un número
-            try
-            {
-                numero = Float.parseFloat(opcion);
-                resultado += numero; //voy acumulando hasta opcion "e"
-                System.out.println("resultado parcial = " + resultado);
-            }
-            catch (NumberFormatException e)
-            {
-                //si el catch se activó x la opción e, no hay que mostrar el mensaje
-                if (!"e".equals(opcion))
-                {
-                    System.out.println("El dato ingresado no es un número");
-                }
-            }
-        }
-        while (!"e".equals(opcion));
-        System.out.println("El resultado es = " + resultado);
-    }
+//    public static void sumar()
+//    {
+//        Scanner scanner = new Scanner(System.in);
+//        String opcion;
+//        float numero;
+//        float resultado = 0f;
+//        do
+//        {
+//            System.out.println("Ingrese número a sumar, o 'e' para terminar la operación");
+//            opcion = scanner.nextLine();
+//            //bloque try catch para evitar que NO se ingrese un número
+//            try
+//            {
+//                numero = Float.parseFloat(opcion);
+//                resultado += numero; //voy acumulando hasta opcion "e"
+//                System.out.println("resultado parcial = " + resultado);
+//            }
+//            catch (NumberFormatException e)
+//            {
+//                //si el catch se activó x la opción e, no hay que mostrar el mensaje
+//                if (!"e".equals(opcion))
+//                {
+//                    System.out.println("El dato ingresado no es un número");
+//                }
+//            }
+//        }
+//        while (!"e".equals(opcion));
+//        System.out.println("El resultado es = " + resultado);
+//    }
 
-    public static void mostrarSaldo(Cuenta cuenta)
-    {
-        System.out.println(cuenta.getSaldo());
-    }
 }
