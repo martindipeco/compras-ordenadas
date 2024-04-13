@@ -1,5 +1,6 @@
 package principal;
 
+import modelo.Compra;
 import modelo.Cuenta;
 
 import java.util.Scanner;
@@ -11,17 +12,20 @@ public class Principal {
 
         //inicio scanner para pedir input de usuario
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bienvenido a las Compras Ordenadas");
+        System.out.println("\nBienvenido a las Compras Ordenadas");
         System.out.println("Ingrese la opción deseada");
         String opcion;
 
         //instancio cuenta para acceder a sus métodos
         Cuenta cuenta = new Cuenta();
 
+        //instancio una compra para acceder a sus métodos
+        Compra compra = new Compra();
+
         //TODO: seguir a partir de acá
         do
         {
-            System.out.println("a: muestra saldo");
+            System.out.println("\na: muestra saldo");
             System.out.println("b: realiza nueva compra");
             System.out.println("c: historial de compras");
             System.out.println("x: salir");
@@ -36,20 +40,34 @@ public class Principal {
                     break;
                 case "b":
                     //realiza nueva compra();
+                    System.out.println("Ingrese el nombre del producto: ");
+                    String producto = scanner.nextLine();
+                    //TODO: validar que no se ingresen números
+                    System.out.println("Ingrese el precio: ");
+                    Double precio = scanner.nextDouble();
+                    scanner.nextLine(); // Consumir el carácter de nueva línea pendiente
+
+                    //el metodo responsable de chequear que tenga saldo esta en Cuenta
+                    //TODO: chequear que sea numero
+                    Compra nuevaCompra = new Compra(precio, producto);
+                    //valido compra y agrego a la lista
+                    cuenta.agregarCompra(nuevaCompra);
                     break;
                 case "c":
-                    //historial de compras(); --abre nuevo menu de opciones
+                    //historial de compras();
+                    // TODO: abre nuevo menu de opciones para ordenar x monto y fecha
+                    cuenta.mostrarHistorial();
                     break;
 
                 case "x":
-                    System.out.println("Gracias por utilizar el sistema");
+                    System.out.println("Gracias por utilizar el sistema\n");
                     break;
                 default:
-                    System.out.println("Opción no válida, por favor ingrese de nuevo");
+                    System.out.println("Opción no válida, por favor ingrese de nuevo\n");
                     break;
             }
         }
-        while (!"x".equals(opcion)); //metodo especial para comparar Stinngs
+        while (!"x".equals(opcion));
         scanner.close();
     }
 

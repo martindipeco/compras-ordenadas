@@ -25,8 +25,32 @@ public class Cuenta {
         return this.saldo;
     }
 
+    public List<Compra> getListaCompras()
+    {
+        return this.listaCompras;
+    }
+
     public void mostrarSaldo()
     {
-        System.out.println(this.getSaldo());
+        System.out.println("El saldo de la cuenta de " + this.titular + " es " + this.getSaldo() +"\n");
+    }
+
+    public void agregarCompra(Compra compra)
+    {
+        if (this.saldo < compra.getMonto())
+        {
+            System.out.println("Saldo insuficiente");
+            return;
+        }
+        this.saldo-= compra.getMonto();
+        listaCompras.add(compra);
+    }
+
+    public void mostrarHistorial()
+    {
+        for (Compra item: listaCompras)
+        {
+            System.out.println("Compra por " + item);
+        }
     }
 }
