@@ -22,7 +22,6 @@ public class Principal {
         //instancio una compra para acceder a sus métodos
         Compra compra = new Compra();
 
-        //TODO: seguir a partir de acá
         do
         {
             System.out.println("\na: muestra saldo");
@@ -42,16 +41,37 @@ public class Principal {
                     //realiza nueva compra();
                     System.out.println("Ingrese el nombre del producto: ");
                     String producto = scanner.nextLine();
-                    //TODO: validar que no se ingresen números
-                    System.out.println("Ingrese el precio: ");
-                    Double precio = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir el carácter de nueva línea pendiente
+                    //se descarta validación para que NO se ingresen números -> ¿que pasa si un producto se llama, x ej 7up?
 
+                    boolean numeroValido = false;
+                    double precio = 0;
+                    while(!numeroValido)
+                    {
+                        System.out.println("Ingrese el precio: ");
+                        if (scanner.hasNextDouble()) // check if the next input is a valid double
+                        {
+                            precio = scanner.nextDouble();
+                            if (precio > 0)
+                            {
+                                numeroValido = true;
+                                scanner.nextLine(); // consume the invalid input
+                            }
+                            else
+                            {
+                                System.out.println("Ingrese un precio mayor a 0");
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("Por favor ingrese un número");
+                            scanner.next(); // consume the invalid input
+                        }
+                    }
                     //el metodo responsable de chequear que tenga saldo esta en Cuenta
-                    //TODO: chequear que sea numero
                     Compra nuevaCompra = new Compra(precio, producto);
                     //valido compra y agrego a la lista
                     cuenta.agregarCompra(nuevaCompra);
+
                     break;
                 case "c":
                     //historial de compras();
