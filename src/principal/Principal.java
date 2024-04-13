@@ -1,23 +1,30 @@
 package principal;
 
+import modelo.Cuenta;
+
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
-public class Main {
+public class Principal {
     public static void main(String[] args) {
 
         //inicio scanner para pedir input de usuario
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenido a las Compras Ordenadas");
+        System.out.println("Ingrese la opción deseada");
         String opcion;
 
+        //instancio cuenta para acceder a sus métodos
+        Cuenta cuenta = new Cuenta();
+
+        //TODO: segir a partir de acá
         do
         {
-            System.out.println("Ingrese la opción deseada");
-            System.out.println("a: suma");
-            System.out.println("b: resta");
-            System.out.println("c: multiplicación");
-            System.out.println("d: división");
-            System.out.println("e: salir");
+            System.out.println("a: muestra saldo");
+            System.out.println("b: realiza nueva compra");
+            System.out.println("c: historial de compras");
+            System.out.println("x: salir");
 
             //convierto a minusculas por las dudas
             opcion = scanner.nextLine().toLowerCase();
@@ -25,18 +32,16 @@ public class Main {
             switch (opcion)
             {
                 case "a":
-                    sumar();
+                    mostrarSaldo(cuenta);
                     break;
                 case "b":
-                    restar();
+                    //realiza nueva compra();
                     break;
                 case "c":
-                    multiplicar();
+                    //historial de compras(); --abre nuevo menu de opciones
                     break;
-                case "d":
-                    dividir();
-                    break;
-                case "e":
+
+                case "x":
                     System.out.println("Gracias por utilizar el sistema");
                     break;
                 default:
@@ -44,7 +49,7 @@ public class Main {
                     break;
             }
         }
-        while (!"e".equals(opcion)); //metodo especial para comparar Stinngs
+        while (!"x".equals(opcion)); //metodo especial para comparar Stinngs
         scanner.close();
     }
 
@@ -52,7 +57,7 @@ public class Main {
     {
         Scanner scanner = new Scanner(System.in);
         String opcion;
-        float numero = 0f;
+        float numero;
         float resultado = 0f;
         do
         {
@@ -78,5 +83,8 @@ public class Main {
         System.out.println("El resultado es = " + resultado);
     }
 
+    public static void mostrarSaldo(Cuenta cuenta)
+    {
+        System.out.println(cuenta.getSaldo());
     }
 }
