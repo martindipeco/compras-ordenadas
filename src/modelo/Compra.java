@@ -29,6 +29,12 @@ public class Compra {
         return this.monto;
     }
 
+    public String getNombreProducto() {return this.nombreProducto; }
+
+    public LocalDateTime getFechaCompra() {
+        return fechaCompra;
+    }
+
     @Override
     public String toString()
     {

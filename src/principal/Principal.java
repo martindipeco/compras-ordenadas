@@ -74,9 +74,51 @@ public class Principal {
 
                     break;
                 case "c":
+                    String seleccion;
                     //historial de compras();
-                    // TODO: abre nuevo menu de opciones para ordenar x monto y fecha
-                    cuenta.mostrarHistorial();
+                    do {
+                        cuenta.mostrarHistorial();
+
+                        System.out.println("\na: Ordena por nombre de producto A-Z");
+                        System.out.println("b: Ordena por nombre de producto Z-A");
+                        System.out.println("c: Ordena por precio menor a mayor");
+                        System.out.println("d: Ordena por precio mayor a menor");
+                        System.out.println("e: Ordena por fecha más lejana");
+                        System.out.println("f: Ordena por fecha más próxima");
+                        System.out.println("x: Volver atrás");
+
+                        //convierto a minusculas por las dudas
+                        seleccion = scanner.nextLine().toLowerCase();
+
+                        switch (seleccion)
+                        {
+                            case "a":
+                                cuenta.ordenaPorNombre();
+                                break;
+                            case "b":
+                                cuenta.ordenaPorNombreDescendente();
+                                break;
+                            case "c":
+                                cuenta.ordenaPorMonto();
+                                break;
+                            case "d":
+                                cuenta.ordenaPorMontoDescendente();
+                                break;
+                            case "e":
+                                cuenta.ordenaPorFecha();
+                                break;
+                            case "f":
+                                cuenta.ordenaPorFechaDescendente();
+                                break;
+                            case "x":
+                                System.out.println("Volviendo atrás\n");
+                                break;
+                            default:
+                                System.out.println("Opción no válida, por favor ingrese de nuevo\n");
+                                break;
+                        }
+                    }
+                    while (!"x".equals(seleccion));
                     break;
 
                 case "x":
@@ -90,35 +132,4 @@ public class Principal {
         while (!"x".equals(opcion));
         scanner.close();
     }
-
-//    public static void sumar()
-//    {
-//        Scanner scanner = new Scanner(System.in);
-//        String opcion;
-//        float numero;
-//        float resultado = 0f;
-//        do
-//        {
-//            System.out.println("Ingrese número a sumar, o 'e' para terminar la operación");
-//            opcion = scanner.nextLine();
-//            //bloque try catch para evitar que NO se ingrese un número
-//            try
-//            {
-//                numero = Float.parseFloat(opcion);
-//                resultado += numero; //voy acumulando hasta opcion "e"
-//                System.out.println("resultado parcial = " + resultado);
-//            }
-//            catch (NumberFormatException e)
-//            {
-//                //si el catch se activó x la opción e, no hay que mostrar el mensaje
-//                if (!"e".equals(opcion))
-//                {
-//                    System.out.println("El dato ingresado no es un número");
-//                }
-//            }
-//        }
-//        while (!"e".equals(opcion));
-//        System.out.println("El resultado es = " + resultado);
-//    }
-
 }
